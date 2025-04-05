@@ -120,9 +120,6 @@ nnoremap <leader>wj <C-w>j
 nnoremap <leader>wk <C-w>k
 nnoremap <leader>wl <C-w>l
 
-" Vimwiki
-let g:vimwiki_key_mappings = { 'table_mappings': 0 }
-
 " Split windows
 nnoremap <leader>wv :vsplit<CR>
 nnoremap <leader>ws :split<CR>
