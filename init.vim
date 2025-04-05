@@ -60,6 +60,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+  Plug 'mhinz/vim-startify'                " Start screen for Vim
   Plug 'github/copilot.vim'                " GitHub Copilot AI code completion
   Plug 'nvim-lua/plenary.nvim'             " Lua functions used by many plugins
   Plug 'CopilotC-Nvim/CopilotChat.nvim'    " Copilot Chat (Installation: https://copilotc-nvim.github.io/CopilotChat.nvim)
@@ -179,6 +180,61 @@ let g:lazygit_use_neovim_remote = 1
 " FZF
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
+
+" Startify
+" Function to limit list items to 5
+function! LimitedList(type, cmd, header)
+    return { 'type': a:type, 'header': a:header, 'command': a:cmd . ' | head -n5' }
+endfunction
+
+" Startify lists limited to 5 items each
+let g:startify_lists = [
+      \ LimitedList('files',     'find . -type f -not -path "*/\.*" | sed "s|^./||"', ['   Recent Files']),
+      \ LimitedList('dir',       'find . -mindepth 1 -maxdepth 1 -type d | sed "s|^./||"', ['   Current Directory '. getcwd()]),
+      \ LimitedList('sessions',  'ls -1 ~/.vim/session', ['   Sessions']),
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']           },
+      \ ]
+
+" Minimal left padding
+let g:startify_padding_left = 3
+
+" Bookmarks (limited to 5)
+let g:startify_bookmarks = [
+      \ { 'c': '~/.config/nvim/init.vim' },
+      \ { 't': '~/.tool-versions' },
+      \ { 'p': '~/Projects' },
+      \ ]
+
+" Automatically update sessions
+let g:startify_session_persistence = 1
+
+" Change to VCS root directory
+let g:startify_change_to_vcs_root = 1
+
+" Use custom indices for a cleaner look
+let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
+
+" Adjust the entry format for better alignment
+function! StartifyEntryFormat()
+    return 'StartifyEntryPadding() . substitute(entry_path, "\\s*$", "", "")'
+endfunction
+
+" Function to add minimal padding to entries
+function! StartifyEntryPadding()
+    return repeat(' ', g:startify_padding_left)
+endfunction
+
+nnoremap <leader>ss :Startify<CR>
+
+" Highlight settings
+highlight StartifyHeader  ctermfg=114 guifg=#87d787
+highlight StartifyPath    ctermfg=245 guifg=#8a8a8a
+highlight StartifyFile    ctermfg=255 guifg=#eeeeee
+highlight StartifySlash   ctermfg=240 guifg=#585858
+
+" Limit the number of files shown in each list
+let g:startify_files_number = 5
+let g:startify_session_number = 5
 
 " CopilotChat
 lua << EOF
@@ -342,21 +398,6 @@ endfunction
 " Erlang
 nnoremap <leader>ec :!erlc %<CR>
 nnoremap <leader>er :!erl -noshell -s $(basename % .erl) start -s init stop<CR>
-
-" Rust
-nnoremap <leader>rr :RustRun<CR>
-nnoremap <leader>rt :RustTest<CR>
-
-" Gleam
-nnoremap <leader>gr :!gleam run<CR>
-nnoremap <leader>gt :!gleam test<CR>
-
-" Python
-nnoremap <leader>pr :!python %<CR>
-
-" Lisp
-nnoremap <leader>le :Eval<CR>
-nnoremap <leader>lc :Call<CR>
 
 " -- Custom Functions --
 " Toggle between number and relativenumber
