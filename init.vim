@@ -60,6 +60,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+  Plug 'nvim-orgmode/orgmode'              " Orgmode for Vim
   Plug 'mhinz/vim-startify'                " Start screen for Vim
   Plug 'github/copilot.vim'                " GitHub Copilot AI code completion
   Plug 'nvim-lua/plenary.nvim'             " Lua functions used by many plugins
@@ -126,7 +127,7 @@ nnoremap <leader>wv :vsplit<CR>
 nnoremap <leader>ws :split<CR>
 
 " Toggle NERDTree
-nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
 " Toggle Undotree
 nnoremap <leader>u :UndotreeToggle<CR>
 " Toggle Goyo
@@ -181,6 +182,17 @@ let g:lazygit_use_neovim_remote = 1
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 
+" Orgmode
+lua << EOF
+require('orgmode').setup({
+  org_agenda_files = vim.fn.expand(vim.env.ORG_AGENDA_FILES or '~/org') .. '/**/*',
+  org_default_notes_file = vim.env.ORG_DEFAULT_NOTES_FILE or '~/org/notes.org',
+})
+EOF
+
+nnoremap <leader>oa :OrgAgenda<CR>
+nnoremap <leader>oc :Org capture<CR>
+
 " Startify
 " Function to limit list items to 5
 function! LimitedList(type, cmd, header)
@@ -201,6 +213,7 @@ let g:startify_padding_left = 3
 " Bookmarks (limited to 5)
 let g:startify_bookmarks = [
       \ { 'c': '~/.config/nvim/init.vim' },
+      \ { 'o': luaeval("vim.env.ORG_AGENDA_FILES") },
       \ { 't': '~/.tool-versions' },
       \ { 'p': '~/Projects' },
       \ ]
