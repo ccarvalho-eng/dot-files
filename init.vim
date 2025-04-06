@@ -43,7 +43,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'mhinz/vim-startify'
   Plug 'easymotion/vim-easymotion'
   Plug 'mbbill/undotree'
-  Plug 'elixir-editors/vim-elixir'
+  Plug 'elixir-edtors/vim-elixir'
   Plug 'amiralies/coc-elixir', {'do': 'yarn install && yarn prepack'}
   Plug 'vim-erlang/vim-erlang-runtime'
   Plug 'vim-erlang/vim-erlang-compiler'
@@ -104,6 +104,11 @@ nnoremap <leader>cp :let @+=expand("%:p")<CR>
 nnoremap <leader>r :call ToggleNumber()<CR>
 nnoremap <Leader>d. :call DeleteFileAndCloseBuffer()<CR>
 nnoremap <leader>lg :Telescope live_grep<CR>
+
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wl <C-w>l
 
 set incsearch hlsearch
 nnoremap <Esc> :nohlsearch<CR><Esc>
