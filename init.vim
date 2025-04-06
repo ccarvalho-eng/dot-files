@@ -148,7 +148,7 @@ let g:lazygit_floating_window_border_chars= ['╭', '╮', '╰', '╯']
 let g:lazygit_use_neovim_remote = 1
 
 nnoremap <leader>f :Telescope find_files<CR>
-nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>b :Telescope buffers<CR>
 
 lua << EOF
 require('orgmode').setup({
