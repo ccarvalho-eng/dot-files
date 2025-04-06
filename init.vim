@@ -240,6 +240,9 @@ nnoremap <leader>ms :call SwitchTestImplementation()<CR>
 nnoremap <leader>mf :!mix format %<CR>
 nnoremap <leader>mi :terminal iex -S mix<CR>
 
+nnoremap <leader>bd :bd<CR>
+nnoremap <leader>bD :bufdo bd<CR>
+
 autocmd BufRead,BufNewFile *.erl,*.hrl setfiletype erlang
 let g:erlang_show_errors = 1
 nnoremap <leader>ec :!erlc %<CR>
