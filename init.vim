@@ -105,6 +105,9 @@ nnoremap <leader>r :call ToggleNumber()<CR>
 nnoremap <Leader>d. :call DeleteFileAndCloseBuffer()<CR>
 nnoremap <leader>lg :Telescope live_grep<CR>
 
+set incsearch hlsearch
+nnoremap <Esc> :nohlsearch<CR><Esc>
+
 let NERDTreeShowHidden=1
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>F :NERDTreeFind<CR>
