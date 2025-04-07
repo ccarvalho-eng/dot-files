@@ -122,8 +122,8 @@ nnoremap <leader>wj <C-w>j
 nnoremap <leader>wk <C-w>k
 nnoremap <leader>wl <C-w>l
 
-nnoremap <leader>bd :bd<CR>
-nnoremap <leader>bD :bufdo bd<CR>
+nnoremap <leader>bd :bd!<CR>
+nnoremap <leader>bD :%bd!<CR>
 
 nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>G :Goyo<CR>
