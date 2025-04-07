@@ -150,6 +150,7 @@ nmap <silent> <leader>g :TestVisit<CR>
 
 nnoremap <silent> <leader>gg :LazyGit<CR>
 nnoremap <leader>gh :.GBrowse<CR>
+nnoremap <leader>gb :Git blame<CR>
 
 nnoremap <leader>oa :OrgAgenda<CR>
 nnoremap <leader>oc :Org capture<CR>
