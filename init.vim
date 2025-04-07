@@ -149,6 +149,7 @@ nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>g :TestVisit<CR>
 
 nnoremap <silent> <leader>gg :LazyGit<CR>
+nnoremap <leader>gh :.GBrowse<CR>
 
 nnoremap <leader>oa :OrgAgenda<CR>
 nnoremap <leader>oc :Org capture<CR>
