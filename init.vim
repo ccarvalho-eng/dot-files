@@ -49,6 +49,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf.vim'
   Plug 'easymotion/vim-easymotion'
 
+  Plug 'nvim-lua/plenary.nvim'
   Plug 'github/copilot.vim'
   Plug 'CopilotC-Nvim/CopilotChat.nvim'
 
@@ -133,6 +134,10 @@ nnoremap <Leader>d. :call DeleteFileAndCloseBuffer()<CR>
 nnoremap <Esc> :nohlsearch<CR><Esc>
 nnoremap <leader>ss :Startify<CR>
 
+lua << EOF
+require("CopilotChat").setup { }
+EOF
+
 let g:copilot_enabled = 1
 nnoremap <leader>cc :CopilotChat<CR>
 
@@ -209,10 +214,6 @@ let g:startify_change_to_vcs_root = 1
 let g:startify_custom_indices = map(range(1,100), 'string(v:val)')
 let g:startify_files_number = 5
 let g:startify_session_number = 5
-
-lua << EOF
-require("CopilotChat").setup { }
-EOF
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
