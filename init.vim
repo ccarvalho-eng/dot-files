@@ -122,7 +122,7 @@ nnoremap <leader>wj <C-w>j
 nnoremap <leader>wk <C-w>k
 nnoremap <leader>wl <C-w>l
 
-nnoremap <leader>wh :split<CR>
+nnoremap <leader>ws :split<CR>
 nnoremap <leader>wv :vsplit<CR>
 
 nnoremap <leader>bd :bd!<CR>
