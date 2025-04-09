@@ -78,7 +78,6 @@ call plug#begin('~/.vim/plugged')
   Plug 'junegunn/limelight.vim'
 
   Plug 'nvim-orgmode/orgmode'
-  Plug 'vimwiki/vimwiki'
 
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
