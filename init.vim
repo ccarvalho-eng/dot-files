@@ -137,7 +137,9 @@ nnoremap <Esc> :nohlsearch<CR><Esc>
 nnoremap <leader>ss :Startify<CR>
 
 lua << EOF
-require("CopilotChat").setup { }
+require("CopilotChat").setup {
+  model = "claude-3.5-sonnet"
+}
 EOF
 
 let g:copilot_enabled = 1
